@@ -1,0 +1,47 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use 5.010;
+use Time::HiRes qw( time );
+use Capture::Tiny ':all';
+
+my $rsync_dest = $ENV{HOME} . '/github/dvn/dvn-sf-rsync';
+
+my ( $cmd, @args );
+
+$cmd = 'rsync';
+#@args = ( '-av', 'rce:public_html', $rsync_dest ); # quick test
+@args = ( '-av', 'dvn.svn.sourceforge.net::svn/dvn/*', $rsync_dest );
+
+run_cmd( $cmd, @args );
+
+die 'This script is not done yet.';
+#say 'time svn2git file:///home/pdurbin/dvn-svn2git/source --trunk dvn-app/trunk --branches dvn-app/branches';
+
+sub run_cmd {
+    my ( $cmd, @args ) = @_;
+
+    my $start = time();
+
+    say "Running `$cmd @args`";
+
+    my ( $stdout, $stderr, $exit );
+
+    ( $stdout, $stderr, $exit ) = capture {
+        system( $cmd, @args );
+    };
+
+    if ($exit) {
+        my $exit_code = $exit >> 8;
+        $exit_code -= 256 if $exit_code > 127;
+        die "$cmd returned an non-zero exit code ($exit_code)! The error was:\n$stderr";
+    }
+    else {
+        say "$cmd command completed successfully";
+    }
+
+    my $end = time();
+
+    printf( "Time elapsed: %.2f seconds (%.2f minutes)\n", $end - $start, ( $end - $start ) / 60 );
+
+}
