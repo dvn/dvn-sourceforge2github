@@ -6,7 +6,7 @@ We use https://dvn.svn.sourceforge.net/svnroot/dvn/dvn-app/trunk as path to the 
 
 ## Set up authors file
 
-FIXME: make this into a file
+FIXME: explain how to make this into a file with `author-file-setup`
 
 FIXME: this `svn log` output is misleading and doesn't include all the authors: http://irclog.perlgeek.de/crimsonfu/2012-12-14#i_6244399
 
