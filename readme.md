@@ -8,6 +8,8 @@ We use https://dvn.svn.sourceforge.net/svnroot/dvn/dvn-app/trunk as path to the 
 
 FIXME: make this into a file
 
+FIXME: this `svn log` output is misleading and doesn't include all the authors: http://irclog.perlgeek.de/crimsonfu/2012-12-14#i_6244399
+
     murphy:tmp pdurbin$ svn log --quiet https://dvn.svn.sourceforge.net/svnroot/dvn/dvn-app/trunk | grep -E "r[0-9]+ \| .+ \|" | awk '{print $3}' | sort | uniq
     Error validating server certificate for 'https://dvn.svn.sourceforge.net:443':
      - The certificate is not issued by a trusted authority. Use the
