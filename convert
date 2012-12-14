@@ -15,8 +15,10 @@ $cmd = 'rsync';
 
 run_cmd( $cmd, @args );
 
-die 'This script is not done yet.';
-#say 'time svn2git file:///home/pdurbin/dvn-svn2git/source --trunk dvn-app/trunk --branches dvn-app/branches';
+$cmd = 'svn2git';
+@args = ( "file://$ENV{HOME}/github/dvn/dvn-sf-rsync", '--trunk', 'dvn-app/trunk', '--branches', 'dvn-app/branches' );
+
+run_cmd( $cmd, @args );
 
 sub run_cmd {
     my ( $cmd, @args ) = @_;
