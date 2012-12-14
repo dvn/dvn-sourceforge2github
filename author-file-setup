@@ -1,0 +1,29 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use 5.010;
+use Text::CSV;
+use Tie::Handle::CSV;
+
+my $infile  = 'authors.tsv';
+my $outdir  = "$ENV{HOME}/.svn2git";
+my $outfile = "$outdir/authors";
+
+-d $outdir || mkdir $outdir;
+
+my $fh_tsv = Tie::Handle::CSV->new( $infile, header => 1, sep_char => "\t" );
+
+my $output;
+
+while ( my $csv_line = <$fh_tsv> ) {
+    $output .=
+      $csv_line->{'SF_USERNAME'} . ' = ' . $csv_line->{'GIT_NAME'} . ' <' . $csv_line->{'GIT_EMAIL'} . '>' . "\n";
+}
+
+close $fh_tsv;
+
+open( my $fh_out, '>', $outfile ) or die $!;
+
+print $fh_out $output;
+
+close $fh_out;
