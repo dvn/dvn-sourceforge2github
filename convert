@@ -16,7 +16,7 @@ $cmd = 'rsync';
 run_cmd( $cmd, @args );
 
 $cmd = 'svn2git';
-@args = ( "file://$ENV{HOME}/github/dvn/dvn-sf-rsync", '--trunk', 'dvn-app/trunk', '--branches', 'dvn-app/branches' );
+@args = ( "file://$ENV{HOME}/github/dvn/dvn-sf-rsync", '--trunk', 'dvn-app/trunk', '--branches', 'dvn-app/branches', '--authors', 'authors.txt' );
 
 run_cmd( $cmd, @args );
 

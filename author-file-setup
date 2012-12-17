@@ -6,10 +6,7 @@ use Text::CSV;
 use Tie::Handle::CSV;
 
 my $infile  = 'authors.tsv';
-my $outdir  = "$ENV{HOME}/.svn2git";
-my $outfile = "$outdir/authors";
-
--d $outdir || mkdir $outdir;
+my $outfile = "authors.txt";
 
 my $fh_tsv = Tie::Handle::CSV->new( $infile, header => 1, sep_char => "\t" );
 
