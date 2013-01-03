@@ -2,37 +2,7 @@ The Dataverse Network Project ( http://thedata.org ) is planning on [migrating f
 
 This repo will capture the migration process.
 
-We use https://dvn.svn.sourceforge.net/svnroot/dvn/dvn-app/trunk as path to the svn repo per http://guides.thedata.org/book/3-check-out-new-copy-dvn-source 
-
-## Set up authors file
-
-FIXME: explain how to make this into a file with `author-file-setup`
-
-FIXME: this `svn log` output is misleading and doesn't include all the authors: http://irclog.perlgeek.de/crimsonfu/2012-12-14#i_6244399
-
-    murphy:tmp pdurbin$ svn log --quiet https://dvn.svn.sourceforge.net/svnroot/dvn/dvn-app/trunk | grep -E "r[0-9]+ \| .+ \|" | awk '{print $3}' | sort | uniq
-    Error validating server certificate for 'https://dvn.svn.sourceforge.net:443':
-     - The certificate is not issued by a trusted authority. Use the
-       fingerprint to validate the certificate manually!
-    Certificate information:
-     - Hostname: *.svn.sourceforge.net
-     - Valid: from Sat, 25 Feb 2012 23:58:41 GMT until Sun, 31 Mar 2013 19:51:44 GMT
-     - Issuer: GeoTrust, Inc., US
-     - Fingerprint: 0b:11:76:de:db:4c:74:72:cb:01:49:7d:13:70:c2:f1:13:7b:cb:bf
-    (R)eject, accept (t)emporarily or accept (p)ermanently? t
-    alexdamour
-    bobtreacy
-    ekraffmiller
-    fiercetek
-    helencaminal
-    kcondon
-    landreev
-    mheppler
-    noel90
-    scolapasta
-    skraffmiller
-    xyang02
-    murphy:tmp pdurbin$ 
+When we're done, we'll update http://guides.thedata.org/book/3-check-out-new-copy-dvn-source 
 
 ## Install RVM and svn2git
 
@@ -110,15 +80,53 @@ See also https://github.com/nirvdrum/svn2git
     Installing RDoc documentation for svn2git-2.2.2...
     murphy:~ pdurbin$ 
 
-## Run conversion script
+## Run conversion script and push repo to GitHub
 
-    murphy:dvn-sourceforge2github pdurbin$ ./convert 
+Note that we clone this repo to a new directory and remove all of .git because a new .git directory will be created. The conversion files remain (seen by `git status`) but we simply won't commit them as we don't want them to be part of the source tree.
+
+    murphy:dvn pdurbin$ git clone https://github.com/dvn/dvn-sourceforge2github.git dvn-svn-import-test4
+    Cloning into 'dvn-svn-import-test4'...
+    remote: Counting objects: 43, done.
+    remote: Compressing objects: 100% (35/35), done.
+    remote: Total 43 (delta 20), reused 30 (delta 7)
+    Unpacking objects: 100% (43/43), done.
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ cd dvn-svn-import-test4
+    murphy:dvn-svn-import-test4 pdurbin$ rm -rf .git
+    murphy:dvn-svn-import-test4 pdurbin$ ./author-file-setup 
+    murphy:dvn-svn-import-test4 pdurbin$ ./convert 
     Running `rsync -av dvn.svn.sourceforge.net::svn/dvn/* /Users/pdurbin/github/dvn/dvn-sf-rsync`
     rsync command completed successfully
-    Time elapsed: 10.12 seconds (0.17 minutes)
-    Running `svn2git file:///Users/pdurbin/github/dvn/dvn-sf-rsync --trunk dvn-app/trunk --branches dvn-app/branches`
+    Time elapsed: 48.10 seconds (0.80 minutes)
+    Running `svn2git file:///Users/pdurbin/github/dvn/dvn-sf-rsync --authors authors.txt --rootistrunk`
     svn2git command completed successfully
-    Time elapsed: 1102.55 seconds (18.38 minutes)
-    murphy:dvn-sourceforge2github pdurbin$ 
+    Time elapsed: 1159.98 seconds (19.33 minutes)
+    murphy:dvn-svn-import-test4 pdurbin$ 
+    murphy:dvn-svn-import-test4 pdurbin$ git status
+    # On branch master
+    # Untracked files:
+    #   (use "git add <file>..." to include in what will be committed)
+    #
+    #       author-file-setup
+    #       authors.tsv
+    #       authors.txt
+    #       convert
+    #       readme.md
+    nothing added to commit but untracked files present (use "git add" to track)
+    murphy:dvn-svn-import-test4 pdurbin$ 
 
-FIXME: push to GitHub, etc.
+At this point we create a new repo on GitHub. The test import repos are going under https://github.com/dvn but the final repo will go under https://github.com/IQSS
+
+Finally, we push the local repo to GitHub:
+
+    murphy:dvn-svn-import-test4 pdurbin$ git remote add origin git@github.com:dvn/dvn-svn-import-test4.git
+    murphy:dvn-svn-import-test4 pdurbin$ git push -u origin master
+    Counting objects: 103398, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (28494/28494), done.
+    Writing objects: 100% (103398/103398), 244.81 MiB | 780 KiB/s, done.
+    Total 103398 (delta 56068), reused 103398 (delta 56068)
+    To git@github.com:dvn/dvn-svn-import-test4.git
+     * [new branch]      master -> master
+    Branch master set up to track remote branch master from origin.
+    murphy:dvn-svn-import-test4 pdurbin$ 
