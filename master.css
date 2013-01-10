@@ -17,13 +17,28 @@ pre code {
 }
 
 h1 {
-  font-size: 140%;
+  font-size: 160%;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
 h2 {
-  font-size: 100%;
+  font-size: 140%;
+  margin-left: 0px;
+}
+
+h3 {
+  font-size: 110%;
+  margin-left: 5px;
+}
+
+h4 {
+  font-size: 80%;
+  margin-left: 10px;
+}
+
+p {
+  margin-left: 15px;
 }
 
 #bread {
