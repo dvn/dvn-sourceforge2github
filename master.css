@@ -17,7 +17,7 @@ pre code {
 }
 
 h1 {
-  font-size: 160%;
+  font-size: 150%;
   margin-top: 4px;
   margin-bottom: 4px;
 }
@@ -53,5 +53,6 @@ p {
 
 #bread ul li {
   display: inline;
-  font-size: 70%;
+  font-size: 85%;
+  font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
