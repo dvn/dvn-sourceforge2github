@@ -25,3 +25,7 @@ https://github.com/IQSS/dvn
 ## Pointing Hudson to the DVN code on GitHub
 
 `FIXME`
+
+## Resources
+
+The [resources](resources) page contains links to more on git and GitHub.
