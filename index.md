@@ -20,7 +20,9 @@ Before talking about DVN, we'll do a quick demo with a smaller and lighter examp
 
 ## Pointing NetBeans to the DVN code on GitHub
 
-https://github.com/IQSS/dvn
+Lasted test import: https://github.com/dvn/dvn-svn-import-test5
+
+Final URL: https://github.com/IQSS/dvn ?
 
 ## Pointing Hudson to the DVN code on GitHub
 
