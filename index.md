@@ -20,4 +20,8 @@ Before talking about DVN, we'll do a quick demo with a smaller and lighter examp
 
 ## Pointing NetBeans to the DVN code on GitHub
 
+https://github.com/IQSS/dvn
 
+## Pointing Hudson to the DVN code on GitHub
+
+`FIXME`
