@@ -22,7 +22,8 @@ Let's talk in more detail about [development of DVN on GitHub](dvn-dev-on-github
 
 ## Pointing Hudson to the DVN code on GitHub
 
-`FIXME`
+- http://wiki.hudson-ci.org/display/HUDSON/Git+Plugin
+- http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin
 
 ## Food for thought
 
