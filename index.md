@@ -8,8 +8,6 @@ The Dataverse Network Project is migrating from SourceForge to GitHub (and svn t
 
 This guide is intended to help DVN developers transition from using svn to git and GitHub, specifically.
 
-If you get lost in these pages, please use the breadcrumbs. :)
-
 ## Setup
 
 The [setup](setup) page describes creating your GitHub account and managing your ssh keys.
