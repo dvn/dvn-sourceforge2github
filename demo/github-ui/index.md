@@ -8,6 +8,8 @@ Click https://github.com/IQSS/iqss-javaee-template
 
 - Organizations: IQSS
 - Network: clones of the repo
+    - active network: https://github.com/openscholar/openscholar/network/members
+    - small network: https://github.com/pdurbin/easybuild-vagrant/network/members
 - Pull requests: merges driven by the GitHub web interface
 - Issues: bug tracker, like Redmine, hosted by GitHub
 - Wiki: optional, powered by Gollum: https://github.com/github/gollum
