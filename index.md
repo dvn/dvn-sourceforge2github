@@ -18,13 +18,9 @@ The [setup](setup) page describes creating your GitHub account and managing your
 
 Before talking about DVN, we'll do a quick demo with a smaller and lighter example called "iqss-javaee-template" in the [demo](demo) section.
 
-## Pointing NetBeans to the DVN code on GitHub
+## DVN development on GitHub
 
-Latest `--rootistrunk` test import: https://github.com/dvn/dvn-svn-import-test5
-
-Version with `--trunk dvn-app/trunk --branches dvn-app/branches`: https://github.com/dvn/dvn-svn-import-test2
-
-Final URL: https://github.com/IQSS/dvn ?
+Let's talk in more detail about [development of DVN on GitHub](dvn-dev-on-github).
 
 ## Pointing Hudson to the DVN code on GitHub
 
