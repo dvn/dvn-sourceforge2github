@@ -4,6 +4,8 @@ This repo will capture the migration process.
 
 When we're done, we'll update http://guides.thedata.org/book/3-check-out-new-copy-dvn-source 
 
+The [gh-pages branch](https://github.com/dvn/dvn-sourceforge2github/tree/gh-pages) of this repo contains the source for guide for DVN developers to transition to GitHub: http://dvn.github.com/dvn-sourceforge2github
+
 ## Install RVM and svn2git
 
 See also https://rvm.io/rvm/install/
