@@ -20,7 +20,9 @@ Before talking about DVN, we'll do a quick demo with a smaller and lighter examp
 
 ## Pointing NetBeans to the DVN code on GitHub
 
-Lasted test import: https://github.com/dvn/dvn-svn-import-test5
+Latest `--rootistrunk` test import: https://github.com/dvn/dvn-svn-import-test5
+
+Version with `--trunk dvn-app/trunk --branches dvn-app/branches`: https://github.com/dvn/dvn-svn-import-test2
 
 Final URL: https://github.com/IQSS/dvn ?
 
