@@ -4,7 +4,7 @@ title: Overview
 ---
 ## Introduction
 
-The Dataverse Network Project is migrating from SourceForge to GitHub (and svn to git) as described in https://redmine.hmdc.harvard.edu/issues/1188
+The Dataverse Network Project is migrating from SourceForge to GitHub (and svn to git) as described at https://github.com/dvn/dvn-sourceforge2github and https://redmine.hmdc.harvard.edu/issues/1188
 
 This guide is intended to help DVN developers transition from using svn to git and GitHub, specifically.
 
