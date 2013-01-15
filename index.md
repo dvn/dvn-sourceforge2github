@@ -18,7 +18,7 @@ Before talking about DVN, we'll do a quick demo with a smaller and lighter examp
 
 ## DVN development on GitHub
 
-Let's talk in more detail about [development of DVN on GitHub](dvn-dev-on-github).
+You'll probably want to advance directly to the [quickstart for development of DVN on GitHub](dvn-dev-on-github/quickstart).
 
 ## Pointing Hudson to the DVN code on GitHub
 
