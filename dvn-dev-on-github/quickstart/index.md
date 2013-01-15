@@ -31,7 +31,9 @@ Click Next.
 
 Click Finish.
 
-Click Open Project.
+NetBeans should detect 5 projects. Click Open Project. Select DVN-web and check Open Required and click Open.
+
+Expect to see a dialog about reference problems. We need to configure libraries in NetBeans.
 
 ## Configure NetBeans libraries
 
