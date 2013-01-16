@@ -20,7 +20,10 @@ Click Next.
 
 ### Remote Branches
 
-- Select Remote Branches: `master*`
+Under Select Remote Branches check both of these:
+
+- `develop*`
+- `master*`
 
 Click Next.
 
@@ -28,6 +31,7 @@ Click Next.
 
 - Parent Directory: `/Users/[YOUR_USERNAME]/NetBeansProjects`
 - Clone Name: `dvn`
+- Checkout Branch: `develop*`
 
 Click Finish.
 
