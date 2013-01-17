@@ -2,7 +2,24 @@
 layout: default
 title: DVN on GitHub
 ---
-Some day this will replace parts of the DVN Developer's Guide at http://guides.thedata.org
+## Introduction
+
+The goal of this "quickstart" is to switch your build environment from SourceForge to GitHub to produce a war file. To actually deploy the war to Glassfish on your workstation, you need to have PostgreSQL and the rest of your application environment set up per the DVN Developer's Guide at http://guides.thedata.org
+
+In time, we'll incorporate all of this into the guide itself.
+
+## New branching model: develop vs. master
+
+<img src="master-develop.png" align="right" >
+
+Please note that with the move to git, we are adopting the branching model described at http://nvie.com/posts/a-successful-git-branching-model/
+
+In this branching model there are two persistent branches:
+
+- develop: where all new commits go
+- master: where code gets merged and tagged as a release
+
+That is to say, **please make your commits on the develop branch, not the master branch**. 
 
 ## Clone the repo
 
@@ -35,7 +52,7 @@ Click Next.
 
 Click Finish.
 
-NetBeans should detect 5 projects. Click Open Project. Select DVN-web and check Open Required and click Open.
+NetBeans should detect 5 projects. Click Open Project. Select DVN-web and check Open Required (so that DVN-ingest is also opened) and click Open.
 
 Expect to see a dialog about reference problems. We need to configure libraries in NetBeans.
 
