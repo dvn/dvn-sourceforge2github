@@ -10,7 +10,7 @@ In time, we'll incorporate all of this into the guide itself.
 
 ## New branching model: develop vs. master
 
-<img src="master-develop.png" align="right" >
+<a href="http://nvie.com/posts/a-successful-git-branching-model/"><img src="master-develop.png" align="right" ></a>
 
 Please note that with the move to git, we are adopting the branching model described at http://nvie.com/posts/a-successful-git-branching-model/
 
@@ -87,3 +87,29 @@ In NetBeans, open the "Properties" menu of the DVN-web project; then go to Libra
 - internal-api.jar
 
 by clicking on "Add JAR/Folder", then selecting each jar in the .../glassfish/modules directory of your 3.1.2 installation. (For example, /Applications/NetBeans/glassfish-3.1.2/glassfish/modules). Leave the "Package" box unchecked for each of these. 
+
+## Pushing your commits to GitHub
+
+By following the instructions above, you should be in the "develop" branch, which is where we want to make commits as we work toward the next release.
+
+You can verify which branch you are on by clicking Team then "Repository Browser".
+
+You should see `dvn [develop]` at the root of the tree and **develop** in bold under Branches -> Local
+
+After making your commit, push it to GitHub by clicking Team -> Remote -> Push, then Next (to use your configured remote repository), then checking **develop** and Finish.
+
+Your commit should now appear on GitHub in the develop branch: https://github.com/IQSS/dvn/commits/develop
+
+Your commit should **not** appear in the master branch on GitHub: https://github.com/IQSS/dvn/commits/master  . Not yet anyway. Remember, we only merge commits into master when we are ready to release.
+
+## Switching to the master branch to merge commits from the develop branch
+
+We should really only need to switch from the develop branch to the master branch as we prepare for a release.
+
+First, we check out the master branch by clicking Team -> Git -> Branch -> Switch to Branch.
+
+Change Branch to "origin/master" and check the box for "Checkout as New Branch" and fill in "master" as the "Branch Name" to match the name of the branch we're switching to. Then click "Switch".
+
+Now, in the Git Repository Browser (from Team -> Repository Browser) the root of the tree should say `dvn [master]` and you should see two branches under Branches -> Local. **master** should be in bold and develop should not.
+
+FIXME: explain how to merge commits into master for a final release (and how to tag the release)
