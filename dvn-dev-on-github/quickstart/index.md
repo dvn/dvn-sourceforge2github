@@ -23,7 +23,7 @@ That is to say, **please make your commits on the develop branch, not the master
 
 ## Clone the repo
 
-In NetBeans, click Team, then Git, then Clone.
+In NetBeans 7.2, click Team, then Git, then Clone.
 
 ### Remote Repository
 
