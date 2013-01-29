@@ -113,3 +113,7 @@ Change Branch to "origin/master" and check the box for "Checkout as New Branch" 
 Now, in the Git Repository Browser (from Team -> Repository Browser) the root of the tree should say `dvn [master]` and you should see two branches under Branches -> Local. **master** should be in bold and develop should not.
 
 FIXME: explain how to merge commits into master for a final release (and how to tag the release)
+
+## If you commit and push to the `master` branch by mistake...
+
+If no one has fetched the bad commit, you can try to remove the commit from your local git repo and GitHub by (carefully) following http://christoph.ruegg.name/blog/2010/5/5/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
