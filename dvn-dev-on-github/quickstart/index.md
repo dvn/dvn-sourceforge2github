@@ -133,3 +133,29 @@ FIXME: explain how to merge commits into master for a final release (and how to 
 ## If you commit and push to the `master` branch by mistake...
 
 If no one has fetched the bad commit, you can try to remove the commit from your local git repo and GitHub by (carefully) following http://christoph.ruegg.name/blog/2010/5/5/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
+
+## Files changed by NetBeans during a clone
+
+After cloning the project from GitHub, NetBeans 7.2.1 seems to change a number of files even before you do anything...
+
+    murphy:dvn pdurbin$ git status
+    # On branch develop
+    # Changes not staged for commit:
+    #   (use "git add <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #       modified:   src/DVN-ingest/nbproject/build-impl.xml
+    #       modified:   src/DVN-ingest/nbproject/genfiles.properties
+    #       modified:   src/DVN-web/nbproject/genfiles.properties
+    #       modified:   src/DVN-web/nbproject/jaxws-build.xml
+    #       modified:   src/DVN-web/nbproject/project.properties
+    #
+    # Untracked files:
+    #   (use "git add <file>..." to include in what will be committed)
+    #
+    #       .gitignore
+    #       src/DVN-web/nbproject/build-impl.xml
+    no changes added to commit (use "git add" and/or "git commit -a")
+    murphy:dvn pdurbin$ 
+
+... it's not entirely clear if these files should be commited to the local repo and pushed to GitHub. See also http://irclog.iq.harvard.edu/dvn/2013-01-15#i_363 and https://redmine.hmdc.harvard.edu/issues/1188#note-13
