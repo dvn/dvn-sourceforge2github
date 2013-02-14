@@ -72,6 +72,8 @@ NetBeans should detect 5 projects. Click Open Project. Select DVN-web and check 
 
 Expect to see a dialog about reference problems. We need to configure libraries in NetBeans.
 
+Please note that you should only have two projects open (DVN-web and DVN-ingest). If you click File -> Open Project you may see other projects such as DVN-EAR, DVN-EJB, and DVN-lockss but you should not open them or you will likely see build errors.
+
 ## Configure NetBeans libraries
 
 Create the following 5 custom libraries using Tools -> Ant Libraries -> New Library:
