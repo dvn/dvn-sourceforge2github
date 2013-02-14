@@ -106,6 +106,39 @@ In NetBeans, open the "Properties" menu of the DVN-web project; then go to Libra
 
 by clicking on "Add JAR/Folder", then selecting each jar in the .../glassfish/modules directory of your 3.1.2 installation. (For example, /Applications/NetBeans/glassfish-3.1.2/glassfish/modules). Leave the "Package" box unchecked for each of these. 
 
+## Files changed by NetBeans during a clone
+
+After cloning the project from GitHub, NetBeans 7.2.1 seems to change a number of files even before you do anything...
+
+    murphy:dvn pdurbin$ git status
+    # On branch develop
+    # Changes not staged for commit:
+    #   (use "git add <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #       modified:   src/DVN-ingest/nbproject/build-impl.xml
+    #       modified:   src/DVN-ingest/nbproject/genfiles.properties
+    #       modified:   src/DVN-web/nbproject/genfiles.properties
+    #       modified:   src/DVN-web/nbproject/jaxws-build.xml
+    #       modified:   src/DVN-web/nbproject/project.properties
+    #
+    no changes added to commit (use "git add" and/or "git commit -a")
+    murphy:dvn pdurbin$ 
+
+For now, we don't want developers to push these changes up to GitHub. To have your local git clone of the repo not report changes to these files, use the following command:
+
+    murphy:dvn pdurbin$ git update-index --assume-unchanged src/DVN-ingest/nbproject/build-impl.xml src/DVN-ingest/nbproject/genfiles.properties src/DVN-web/nbproject/genfiles.properties src/DVN-web/nbproject/jaxws-build.xml src/DVN-web/nbproject/project.properties
+    murphy:dvn pdurbin$ 
+
+At this point, `git status` (and Netbeans) reports no changes, which is what we expect from a freshly cloned git repo:
+
+    murphy:dvn pdurbin$ git status
+    # On branch develop
+    nothing to commit (working directory clean)
+    murphy:dvn pdurbin$ 
+
+(In the future we may remove some of these files from tracking with `git rm --cached` after we've run `git update-index --assume-unchanged` on some files. For more discussion of nbproject files and git see also http://irclog.iq.harvard.edu/dvn/2013-01-15#i_363 and https://redmine.hmdc.harvard.edu/issues/1188#note-13 )
+
 ## Pushing your commits to GitHub
 
 By following the instructions above, you should be in the "develop" branch, which is where we want to make commits as we work toward the next release.
@@ -135,29 +168,3 @@ FIXME: explain how to merge commits into master for a final release (and how to 
 ## If you commit and push to the `master` branch by mistake...
 
 If no one has fetched the bad commit, you can try to remove the commit from your local git repo and GitHub by (carefully) following http://christoph.ruegg.name/blog/2010/5/5/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
-
-## Files changed by NetBeans during a clone
-
-After cloning the project from GitHub, NetBeans 7.2.1 seems to change a number of files even before you do anything...
-
-    murphy:dvn pdurbin$ git status
-    # On branch develop
-    # Changes not staged for commit:
-    #   (use "git add <file>..." to update what will be committed)
-    #   (use "git checkout -- <file>..." to discard changes in working directory)
-    #
-    #       modified:   src/DVN-ingest/nbproject/build-impl.xml
-    #       modified:   src/DVN-ingest/nbproject/genfiles.properties
-    #       modified:   src/DVN-web/nbproject/genfiles.properties
-    #       modified:   src/DVN-web/nbproject/jaxws-build.xml
-    #       modified:   src/DVN-web/nbproject/project.properties
-    #
-    # Untracked files:
-    #   (use "git add <file>..." to include in what will be committed)
-    #
-    #       .gitignore
-    #       src/DVN-web/nbproject/build-impl.xml
-    no changes added to commit (use "git add" and/or "git commit -a")
-    murphy:dvn pdurbin$ 
-
-... it's not entirely clear if these files should be commited to the local repo and pushed to GitHub. See also http://irclog.iq.harvard.edu/dvn/2013-01-15#i_363 and https://redmine.hmdc.harvard.edu/issues/1188#note-13
