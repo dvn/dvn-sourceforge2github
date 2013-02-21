@@ -137,7 +137,7 @@ At this point, `git status` (and Netbeans) reports no changes, which is what we 
     nothing to commit (working directory clean)
     murphy:dvn pdurbin$ 
 
-(In the future we may remove some of these files from tracking with `git rm --cached` after we've run `git update-index --assume-unchanged` on some files. For more discussion of nbproject files and git see also http://irclog.iq.harvard.edu/dvn/2013-01-15#i_363 and https://redmine.hmdc.harvard.edu/issues/1188#note-13 )
+(In the future we may remove some of these files from tracking with `git rm --cached` after we've run `git update-index --no-assume-unchanged` on some files. For more discussion of nbproject files and git see also http://irclog.iq.harvard.edu/dvn/2013-01-15#i_363 and https://redmine.hmdc.harvard.edu/issues/1188#note-13 )
 
 ## Pushing your commits to GitHub
 
