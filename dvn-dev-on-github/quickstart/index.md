@@ -168,3 +168,19 @@ FIXME: explain how to merge commits into master for a final release (and how to 
 ## If you commit and push to the `master` branch by mistake...
 
 If no one has fetched the bad commit, you can try to remove the commit from your local git repo and GitHub by (carefully) following http://christoph.ruegg.name/blog/2010/5/5/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
+
+## Feature branches
+
+> "The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment)." -- http://nvie.com/posts/a-successful-git-branching-model/ 
+
+After branching from "develop", here's a basic workflow for keeping up with "develop". We rebase the latest changes from "develop" as if they were all made before we make any changes:
+
+*Please note: only use --force with `git push` if you're the only one working on the feature branch.*
+
+    git checkout develop
+    git pull
+    git checkout 2656-solr
+    git rebase develop
+    git push --force origin 2656-solr
+    git commit
+    git commit
