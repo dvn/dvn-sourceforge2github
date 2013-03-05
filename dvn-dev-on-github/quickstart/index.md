@@ -173,14 +173,55 @@ If no one has fetched the bad commit, you can try to remove the commit from your
 
 > "The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment)." -- http://nvie.com/posts/a-successful-git-branching-model/ 
 
-After branching from "develop", here's a basic workflow for keeping up with "develop". We rebase the latest changes from "develop" as if they were all made before we make any changes:
+### Example feature branch: 2656-lucene
 
-*Please note: only use --force with `git push` if you're the only one working on the feature branch.*
+First, we create the branch and check it out:
+
+    murphy:dvn pdurbin$ git branch
+      2656-solr
+    * develop
+    murphy:dvn pdurbin$ git branch 2656-lucene
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git branch
+      2656-lucene
+      2656-solr
+    * develop
+    murphy:dvn pdurbin$ git checkout 2656-lucene
+    Switched to branch '2656-lucene'
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git status
+    # On branch 2656-lucene
+    nothing to commit (working directory clean)
+    murphy:dvn pdurbin$ 
+
+Then, we make a change and a commit, and push it to https://github.com/iqss/dvn/tree/2656-lucene (creating a new remote branch):
+
+    murphy:dvn pdurbin$ vim src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/index/Indexer.java
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git commit -m 'start lucene faceting branch' src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/index/Indexer.java
+    [2656-lucene 3b82f88] start lucene faceting branch
+     1 file changed, 73 insertions(+), 2 deletions(-)
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git push origin 2656-lucene
+    Counting objects: 25, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (10/10), done.
+    Writing objects: 100% (13/13), 2.23 KiB, done.
+    Total 13 (delta 6), reused 0 (delta 0)
+    To git@github.com:IQSS/dvn.git
+     * [new branch]      2656-lucene -> 2656-lucene
+    murphy:dvn pdurbin$ 
+
+As we work on the feature branch, we rebase the latest changes from "develop" as if they were all made before we make any changes:
+
+**Please note: it is recommended to only use --force with `git push` if you're the only one working on the feature branch.** http://stackoverflow.com/questions/8939977/git-push-rejected-after-feature-branch-rebase/8940299#8940299 says, "In my opinion, rebasing feature branches on master and force-pushing them back to remote repository is ok as long as you're the only one who works on that branch."
+
+Before using --force, try your `git push` without it.
 
     git checkout develop
     git pull
-    git checkout 2656-solr
+    git checkout 2656-lucene
     git rebase develop
-    git push --force origin 2656-solr
+    git push --force origin 2656-lucene
     git commit
     git commit
