@@ -212,16 +212,86 @@ Then, we make a change and a commit, and push it to https://github.com/iqss/dvn/
      * [new branch]      2656-lucene -> 2656-lucene
     murphy:dvn pdurbin$ 
 
-As we work on the feature branch, we rebase the latest changes from "develop" as if they were all made before we make any changes:
+As we work on the feature branch, we merge the latest changes from "develop". We want to resolve conflicts in the feature branch itself so that the feature branch will merge cleanly into "develop" when we're ready. In the example below, we use `git mergetool` and `opendiff` to resolve conflicts and save the merge. Then we push the newly-merged 2656-lucene feature branch to GitHub.
 
-**Please note: it is recommended to only use --force with `git push` if you're the only one working on the feature branch.** http://stackoverflow.com/questions/8939977/git-push-rejected-after-feature-branch-rebase/8940299#8940299 says, "In my opinion, rebasing feature branches on master and force-pushing them back to remote repository is ok as long as you're the only one who works on that branch."
+    murphy:dvn pdurbin$ git branch
+    * 2656-lucene
+      2656-solr
+      develop
+    murphy:dvn pdurbin$ git checkout develop
+    murphy:dvn pdurbin$ git branch
+      2656-lucene
+      2656-solr
+    * develop
+    murphy:dvn pdurbin$ git pull
+    remote: Counting objects: 206, done.
+    remote: Compressing objects: 100% (43/43), done.
+    remote: Total 120 (delta 70), reused 96 (delta 46)
+    Receiving objects: 100% (120/120), 17.65 KiB, done.
+    Resolving deltas: 100% (70/70), completed with 40 local objects.
+    From github.com:IQSS/dvn
+       8fd223d..9967413  develop    -> origin/develop
+    Updating 8fd223d..9967413
+    Fast-forward
+     .../admin/EditNetworkPrivilegesServiceBean.java  |    5 +-
+    (snip)
+     src/DVN-web/web/study/StudyFilesFragment.xhtml   |    2 +-
+     12 files changed, 203 insertions(+), 118 deletions(-)
+    murphy:dvn pdurbin$ murphy:dvn pdurbin$ git pull
+    remote: Counting objects: 206, done.
+    remote: Compressing objects: 100% (43/43), done.
+    remote: Total 120 (delta 70), reused 96 (delta 46)
+    Receiving objects: 100% (120/120), 17.65 KiB, done.
+    Resolving deltas: 100% (70/70), completed with 40 local objects.
+    From github.com:IQSS/dvn
+       8fd223d..9967413  develop    -> origin/develop
+    Updating 8fd223d..9967413
+    Fast-forward
+     .../admin/EditNetworkPrivilegesServiceBean.java  |    5 +-
+    (snip)
+     .../harvard/iq/dvn/core/web/study/StudyUI.java   |    2 +-
+     src/DVN-web/web/HomePage.xhtml                   |    5 +-
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git checkout 2656-lucene
+    Switched to branch '2656-lucene'
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git merge develop
+    Auto-merging src/DVN-web/web/BasicSearchFragment.xhtml
+    CONFLICT (content): Merge conflict in src/DVN-web/web/BasicSearchFragment.xhtml
+    Auto-merging src/DVN-web/src/edu/harvard/iq/dvn/core/web/BasicSearchFragment.java
+    Auto-merging src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/index/Indexer.java
+    Automatic merge failed; fix conflicts and then commit the result.
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git status
+    # On branch 2656-lucene
+    # Changes to be committed:
+    #
+    #       modified:   src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/admin/EditNetworkPrivilegesServiceBean.java
+    (snip)
+    #       new file:   src/DVN-web/web/admin/ChooseDataverseForCreateStudy.xhtml
+    #       modified:   src/DVN-web/web/study/StudyFilesFragment.xhtml
+    #
+    # Unmerged paths:
+    #   (use "git add/rm <file>..." as appropriate to mark resolution)
+    #
+    #       both modified:      src/DVN-web/web/BasicSearchFragment.xhtml
+    #
+    murphy:dvn pdurbin$ git mergetool
+    merge tool candidates: opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse ecmerge p4merge araxis bc3 emerge vimdiff
+    Merging:
+    src/DVN-web/web/BasicSearchFragment.xhtml
 
-Before using --force, try your `git push` without it.
-
-    git checkout develop
-    git pull
-    git checkout 2656-lucene
-    git rebase develop
-    git push --force origin 2656-lucene
-    git commit
-    git commit
+    Normal merge conflict for 'src/DVN-web/web/BasicSearchFragment.xhtml':
+      {local}: modified file
+      {remote}: modified file
+    Hit return to start merge resolution tool (opendiff):
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git add .
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git commit -m "Merge branch 'develop' into 2656-lucene"
+    [2656-lucene 519cd8c] Merge branch 'develop' into 2656-lucene
+    murphy:dvn pdurbin$ 
+    murphy:dvn pdurbin$ git push origin 2656-lucene
+    (snip)
+    murphy:dvn pdurbin$ 
