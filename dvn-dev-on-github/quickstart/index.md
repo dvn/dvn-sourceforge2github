@@ -169,6 +169,18 @@ FIXME: explain how to merge commits into master for a final release (and how to 
 
 If no one has fetched the bad commit, you can try to remove the commit from your local git repo and GitHub by (carefully) following http://christoph.ruegg.name/blog/2010/5/5/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
 
+## Previewing changes before a pull
+
+If the build fails overnight you may want to hold off on doing a pull until the problem is resolved. To preview what has changed since your last pull, you can do a `git fetch` (the first part of a pull) then `git log HEAD..origin/develop` to see the commit messages. `git log -p` or `git diff` will allow you to see the contents of the changes:
+
+    git checkout develop
+    git fetch
+    git log HEAD..origin/develop
+    git log -p HEAD..origin/develop
+    git diff HEAD..origin/develop
+
+After the build is working again, you can simply do a pull as normal.
+
 ## Feature branches
 
 > "The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment)." -- http://nvie.com/posts/a-successful-git-branching-model/ 
