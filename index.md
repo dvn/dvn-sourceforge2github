@@ -32,3 +32,7 @@ Git is extremely flexible... let's have some [food for thought](food4thought).
 ## Resources
 
 The [resources](resources) page contains links to more on git and GitHub.
+
+## Source for these pages
+
+https://github.com/dvn/dvn-sourceforge2github/tree/gh-pages contains the source (Markdown mostly) for these pages.
