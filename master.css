@@ -5,6 +5,7 @@ body {
 pre {
   white-space: pre-wrap; /* http://www.w3.org/TR/CSS2/text.html */
   border: 1px solid #DEDEDE;
+  margin-left: 15px;
 }
 
 code {
