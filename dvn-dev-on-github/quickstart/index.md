@@ -68,7 +68,19 @@ Click Next.
 
 Click Finish.
 
-NetBeans should detect 5 projects. Click Open Project. Select DVN-web and check Open Required (so that DVN-ingest is also opened) and click Open.
+At this point, you'll need to quit NetBeans so we can retrieve nbproject files from git history. Open a terminal and run these commands:
+
+    cd ~/NetBeansProjects/dvn
+    git checkout f1dc53c src/DVN-web/nbproject
+    git checkout f1dc53c src/DVN-ingest/nbproject
+
+Then, run `git status` and unstage any files that git shows as new:
+
+    git reset HEAD path/to/files-git-status-shows-as-new
+
+At this point, your nbproject files should be in place.
+
+Launch NetBeans and it should detect 5 projects. Click Open Project. Select DVN-web and check Open Required (so that DVN-ingest is also opened) and click Open.
 
 Expect to see a dialog about reference problems. We need to configure libraries in NetBeans.
 
