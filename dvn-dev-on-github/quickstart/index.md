@@ -86,6 +86,17 @@ Expect to see a dialog about reference problems. We need to configure libraries 
 
 Please note that you should only have two projects open (DVN-web and DVN-ingest). If you click File -> Open Project you may see other projects such as DVN-EAR, DVN-EJB, and DVN-lockss but you should not open them or you will likely see build errors.
 
+## Install ICEfaces plugin
+
+Download http://dvn.iq.harvard.edu/dev/icefaces/ICEfaces-2.0.2-Netbeans-7.0.zip and unzip it. Then click Tools, Plugins, Downloaded, Add Plugins, and select all three nbm files.
+
+Afterwards you'll need to fix one of the plugins:
+
+- Click Tools, then Ant Libraries
+- Click "ICEfaces Components (2.0.2)"
+- Click the red library (`nbinst://org.netbeans.libs.commons_logging/modules/ext/commons-logging-1.1.jar`) and click Remove
+- Click "Add JAR/folder" and add `~/NetBeansProjects/dvn/lib/dvn-lib-WEB/commons-logging.jar` (to replace the library you removed)
+
 ## Configure NetBeans libraries
 
 Create the following 5 custom libraries using Tools -> Ant Libraries -> New Library:
